@@ -20,10 +20,11 @@ int initialize(int **a);
 int freeArray(int *a);
 void printArray(int *a);
 
-int selectionSort(int *a);
+int selectionSort(int *a); // 전체 원소 중에서 기준 위치에 맞는 원소를 선택해 자리를 교환하는 정렬 방법
 int insertionSort(int *a); // 정렬되어있는 부분집합에 새로운 원소의 위치를 찾아 삽입
 int bubbleSort(int *a); // 두 인접한 원소를 검사하여 정렬하는 방법
-int shellSort(int *a); // insertionSort의 문제점을 보완하기 위한 정렬 방법
+int shellSort(int *a); // 일정한 간격으로 떨어져 있는 자료들끼리 부분집합을 구성하고, 각 부분집합에 있는 원소에 대해 삽입 정렬을 수행하는 작업을
+// 반복하여 전체 원소를 정렬하는 방법
 /* recursive function으로 구현 */
 int quickSort(int *a, int n); // 정렬할 전체 원소에 대해서 정렬을 수행하지 않고,
 // 기준 값을 중심으로 왼쪽 부분집합과 오른쪽 부분집합으로 분할하여 정렬하는 방법
@@ -179,9 +180,9 @@ int selectionSort(int *a) // 주어진 리스트 중에 최소값을 찾는다.
 
 	for (i = 0; i < MAX_ARRAY_SIZE; i++)
 	{
-		minindex = i;
+		minindex = i; // 기준 위치 원소의 인덱스 i를 변수 min에 설정한다.
 		min = a[i];
-		for(j = i+1; j < MAX_ARRAY_SIZE; j++)
+		for(j = i+1; j < MAX_ARRAY_SIZE; j++) // i번 원소부터 마지막 원소까지 비교하면서 가장 작은 원소의 인덱스를 변수 min에 저장한다.
 		{
 			if (min > a[j])
 			{
@@ -189,7 +190,7 @@ int selectionSort(int *a) // 주어진 리스트 중에 최소값을 찾는다.
 				minindex = j;
 			}
 		}
-		a[minindex] = a[i];
+		a[minindex] = a[i]; // 가장 작은 값 a[minindex]과 기준 원소 a[i]를 서로 교환한다.
 		a[i] = min;
 	}
 
@@ -211,7 +212,7 @@ int insertionSort(int *a)
 	for(i = 1; i < MAX_ARRAY_SIZE; i++)
 	{
 		t = a[i]; // 배열 인덱스 i부터 a[i] = 임시보관장소
-		j = i;
+		j = i; // 정렬 대상 원소의 인덱스 i를 j에 저장한다.
 		while (a[j-1] > t && j > 0)
 		{
 			a[j] = a[j-1]; // j번째 있는 요소를 j-1로 이동시켜준다
@@ -239,9 +240,9 @@ int bubbleSort(int *a) // 첫 번째 원소부터 마지막 원소까지 반복�
 
 	for(i = 0; i < MAX_ARRAY_SIZE; i++)
 	{
-		for (j = 0; j < MAX_ARRAY_SIZE; j++)
+		for (j = 0; j < MAX_ARRAY_SIZE; j++) // 0번 원소부터 MAX_ARRAY_SIZE번 원소까지 반복 수행한다.
 		{
-			if (a[j-1] > a[j])
+			if (a[j-1] > a[j]) // 인접한 원소를 두 개 비교하여 자리를 교환한다.
 			{
 				t = a[j-1];
 				a[j-1] = a[j];
@@ -319,8 +320,8 @@ int quickSort(int *a, int n) // 기준 값: 피봇(pivot)
 		a[i] = a[n-1];
 		a[n-1] = t;
 
-		quickSort(a, i);
-		quickSort(a+i+1, n-i-1);
+		quickSort(a, i); // 피봇 왼쪽 부분집합에 대해 퀵 정렬을 재귀호출
+		quickSort(a+i+1, n-i-1); // 피봇 오른쪽 부분집합에 대해 퀵 정렬을 재귀호출
 	}
 
 
