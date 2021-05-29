@@ -25,7 +25,8 @@ int insertionSort(int *a); // 정렬되어있는 부분집합에 새로운 원�
 int bubbleSort(int *a); // 두 인접한 원소를 검사하여 정렬하는 방법
 int shellSort(int *a); // insertionSort의 문제점을 보완하기 위한 정렬 방법
 /* recursive function으로 구현 */
-int quickSort(int *a, int n);
+int quickSort(int *a, int n); // 정렬할 전체 원소에 대해서 정렬을 수행하지 않고,
+// 기준 값을 중심으로 왼쪽 부분집합과 오른쪽 부분집합으로 분할하여 정렬하는 방법
 
 
 /* hash code generator, key % MAX_HASH_TABLE_SIZE */
@@ -290,7 +291,10 @@ int shellSort(int *a) // 부분집합의 기준이 되는 간격을 매개뱐수
 	return 0;
 }
 
-int quickSort(int *a, int n)
+int quickSort(int *a, int n) // 기준 값: 피봇(pivot)
+// 일반적으로 가운데에 위치한 원소 선택
+// 왼쪽 부분 집합: 기준 값보다 작은 원소들을 이동
+// 오른쪽 부분 집합: 기준 값보다 큰 원소들을 이동시킴
 {
 	int v, t;
 	int i, j;
