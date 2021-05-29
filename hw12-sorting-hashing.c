@@ -34,7 +34,10 @@ int quickSort(int *a, int n); // 정렬할 전체 원소에 대해서 정렬을 
 int hashCode(int key);
 
 /* array a에대 한 hash table을 만든다. */
-int hashing(int *a, int **ht);
+int hashing(int *a, int **ht); // 데이터를 해시테이블이라는 배열에
+// 저장하는 것
+// 데이터의 키 값을 적절한 해시함수을 이용
+// 해시테이블 주소로 변환하여 데이터를 찾는 방법
 
 /* hash table에서 key를 찾아 hash table의 index return */
 int search(int *ht, int key);
