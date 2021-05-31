@@ -332,7 +332,7 @@ int quickSort(int *a, int n) // 기준 값: 피봇(pivot)
 }
 
 int hashCode(int key) {
-   return key % MAX_HASH_TABLE_SIZE;
+   return key % MAX_HASH_TABLE_SIZE; // 주소 = key값 % MAX해시 테이블의 크기
 }
 
 int hashing(int *a, int **ht)
@@ -358,7 +358,7 @@ int hashing(int *a, int **ht)
 	int key = -1;
 	int hashcode = -1;
 	int index = -1;
-	for (int i = 0; i < MAX_ARRAY_SIZE; i++)
+	for (int i = 0; i < MAX_ARRAY_SIZE; i++) // key에 대응하는 값들 초기화
 	{
 		key = a[i];
 		hashcode = hashCode(key);
